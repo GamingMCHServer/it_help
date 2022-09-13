@@ -3,14 +3,15 @@ AT89S8252
 
 Interrupts:
 -----------
-interrupt | asm addr. | c
-----------|-----------|---
-ext0:     | 0003h     | 0
-timer0:   | 000Bh     | 1
-ext1:     | 0013h     | 2
-timer1:   | 001Bh     | 3
-serial:   | 0023h     | 4
-timer2:   | 002Bh     | 5
+interrupt | asm addr. | c-numerisch | c-name
+----------|-----------|-------------|--------
+alle:     | N/A       | N/A         | EA
+ext0:     | 0003h     | 0           | EX0
+timer0:   | 000Bh     | 1           | ET0
+ext1:     | 0013h     | 2           | EX1
+timer1:   | 001Bh     | 3           | ET1
+serial:   | 0023h     | 4           | ES
+timer2:   | 002Bh     | 5           | ET2
 
 Assembler:
 ----------
@@ -45,7 +46,7 @@ Kommentare: `; Kommentar`
 
 C:
 ---
-vollständige Dokumentation [hier](https://www.keil.com/support/man/docs/c51/c51_intro.htm).
+vollständige Dokumentation von CX51 [hier](https://www.keil.com/support/man/docs/c51/c51_intro.htm).
 ```c
 #include<AT898252.h>
 
@@ -66,12 +67,8 @@ void main() {
     // ...
 }
 
-// vvvv Setup the interrupts
 void init() {
-    IT0 = 1; // falling edge triggered
-             // state triggered: 0
-    EX0 = 1; // Enable EXT0
-    EA  = 1; // Enable Interrupts
+
 }
 
 // vvvv Interrupt Service Routine
@@ -79,23 +76,56 @@ void int0() interrupt 0 {
     // ...
 }
 ```
-Ports: `P2_3`  
-Kommentare:  
+### Ports:
+`P2_3`  
+### Kommentare:  
 ```c
 // Kommentar
 /*
   Kommentar
  */
 ```
-Arrays:
+### Arrays:
 ```c
 int x[5];
 int y[3] = {3, 4, 5}
 int z[] = {3, 4, 5};  // Größe implizit
 char r[13] = "Hello, World!"  // char-arrays als Strings
 ```
+### Timer:
+Systemtakt: 1 MHz (1 µs)
+#### `TMOD`:
+```
+Timer 1              | Timer 0
+Gate | C/T | M1 | M0 | Gate | C/T | M1 | M0
+```
+- `Gate`:
+    - 0: Timer durch `TR`-Bit Schalten
+    - 1: Timer durch `TR`-Bit und Portpin schalten
+- `C/T`:
+    - 0: Timer
+    - 1: Zähler
+- `M1`, `M0`:
+    - 00: Modus 0
+    - 01: 16-Bit-Timer ohne Nachladen
+    - 10: 8-Bit-Timer mit Auto-Reload
+    - 11: 2 8-Bit-Timer
 
-### memory types:
+#### `TCON`: 
+```
+Timer                 | Externe Interrupts
+TF1 | TR1 | TF0 | TR0 | IE1 | IT1 | IE0 | IT0
+```
+- TFx: 0, 1; wird bei Timer-Überlauf gesetzt
+- TRx:
+    - 0: Timer x Stopp
+    - 1: Timer x Läuft
+- IEx: 0, 1; wird gesetzt wenn Flanke ext. Interrupt erkannt wird
+- ITx:
+    - 0: Interrupt bei Lowpegel
+    - 1: Interrupt bei Falling Edge
+
+### Speichertypen:
 type    | ort
 --------|--------------------------------------------
 `data`  | direkt adressierbarer interner unterer RAM
