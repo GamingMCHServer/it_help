@@ -14,7 +14,7 @@ timer2:   | 002Bh     | 5
 
 Assembler:
 ----------
-```
+```asm
 $NOMOD51
 $include (AT898252.h)
 org 0000h
@@ -46,7 +46,7 @@ Kommentare: `; Kommentar`
 C:
 ---
 vollständige Dokumentation [hier](https://www.keil.com/support/man/docs/c51/c51_intro.htm).
-```
+```c
 #include<AT898252.h>
 
 // data type aliases for convenience
@@ -81,14 +81,14 @@ void int0() interrupt 0 {
 ```
 Ports: `P2_3`  
 Kommentare:  
-```
+```c
 // Kommentar
 /*
   Kommentar
  */
 ```
 Arrays:
-```
+```c
 int x[5];
 int y[3] = {3, 4, 5}
 int z[] = {3, 4, 5};  // Größe implizit
