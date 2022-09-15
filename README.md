@@ -68,7 +68,7 @@ void main() {
 }
 
 void init() {
-
+    // ...
 }
 
 // vvvv Interrupt Service Routine
@@ -92,7 +92,7 @@ int y[3] = {3, 4, 5}
 int z[] = {3, 4, 5};  // Größe implizit
 char r[13] = "Hello, World!"  // char-arrays als Strings
 ```
-### Timer:
+### Timer & Interrupt:
 Systemtakt: 1 MHz (1 µs)
 #### `TMOD`:
 ```
@@ -124,6 +124,14 @@ TF1 | TR1 | TF0 | TR0 | IE1 | IT1 | IE0 | IT0
 - ITx:
     - 0: Interrupt bei Lowpegel
     - 1: Interrupt bei Falling Edge
+    
+#### `IENO`:
+```
+EA | - | - | - | ET1 | EX1 | ET0 | EX0
+```
+- `EA`: Interrupt Enable
+- `ETx`: Timer x Interrupt Enable
+- `EXx`: Extern x Interrupt Enable
 
 ### Speichertypen:
 type    | ort
