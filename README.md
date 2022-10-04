@@ -5,11 +5,11 @@ Interrupts:
 -----------
 interrupt | asm addr. | c-numerisch | c-name | 8051 Port
 ----------|-----------|-------------|--------|-----------
-alle:     | N/A       | N/A         | EA     |
+alle:     | N/A       | N/A         | EA     | 
 ext0:     | 0003h     | 0           | EX0    | P3_2
-timer0:   | 000Bh     | 1           | ET0    |
+timer0:   | 000Bh     | 1           | ET0    | P3_4
 ext1:     | 0013h     | 2           | EX1    | P3_3
-timer1:   | 001Bh     | 3           | ET1    |
+timer1:   | 001Bh     | 3           | ET1    | P3_5
 serial:   | 0023h     | 4           | ES     |
 timer2:   | 002Bh     | 5           | ET2    |
 
