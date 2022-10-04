@@ -3,15 +3,15 @@ AT89S8252
 
 Interrupts:
 -----------
-interrupt | asm addr. | c-numerisch | c-name
-----------|-----------|-------------|--------
-alle:     | N/A       | N/A         | EA
-ext0:     | 0003h     | 0           | EX0
-timer0:   | 000Bh     | 1           | ET0
-ext1:     | 0013h     | 2           | EX1
-timer1:   | 001Bh     | 3           | ET1
-serial:   | 0023h     | 4           | ES
-timer2:   | 002Bh     | 5           | ET2
+interrupt | asm addr. | c-numerisch | c-name | 8051 Port
+----------|-----------|-------------|--------|-----------
+alle:     | N/A       | N/A         | EA     |
+ext0:     | 0003h     | 0           | EX0    | P3_2
+timer0:   | 000Bh     | 1           | ET0    |
+ext1:     | 0013h     | 2           | EX1    | P3_3
+timer1:   | 001Bh     | 3           | ET1    |
+serial:   | 0023h     | 4           | ES     |
+timer2:   | 002Bh     | 5           | ET2    |
 
 Assembler:
 ----------
