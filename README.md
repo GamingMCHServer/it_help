@@ -133,6 +133,10 @@ EA | - | - | - | ET1 | EX1 | ET0 | EX0
 - `ETx`: Timer x Interrupt Enable
 - `EXx`: Extern x Interrupt Enable
 
+#### `TLx` / `THx`
+
+Timer x Low- und High-Byte
+
 ### Speichertypen:
 type    | ort
 --------|--------------------------------------------
